@@ -107,6 +107,7 @@ HTMLWidgets.widget({
       guide: x.guide,
       x: x.x,
       y: x.y,
+      split: x.split,
       color: x.color,
       dimensions: x.dimensions,
       plugins: plugins
