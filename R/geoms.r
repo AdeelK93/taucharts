@@ -116,11 +116,12 @@ tau_stacked_bar <- function(tau, x, y, color=NULL, size=NULL) {
 #' tauchart(crimes) %>%
 #'   tau_line("State", c("Crime", "Amount"), "Crime") %>%
 #'   tau_guide_y(auto_scale = FALSE)
-tau_line <- function(tau, x, y, color=NULL, size=NULL) {
+tau_line <- function(tau, x, y, color=NULL, size=NULL, split=NULL) {
   tau$x$x <- x
   tau$x$y <- y
   tau$x$color <- color
   tau$x$size <- size
+  tau$x$split <- split
   tau$x$type <- "line"
   tau
 }
