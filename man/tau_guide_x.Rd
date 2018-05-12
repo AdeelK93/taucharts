@@ -35,12 +35,10 @@ information.}
 Control x-axis padding, label, scale & tick format
 }
 \examples{
-if (interactive()) {
 tauchart(mtcars) \%>\%
  tau_point("mpg", "wt") \%>\%
  tau_guide_x(label="Miles/gallon", nice=FALSE) \%>\%
  tau_guide_y(label="Weight", nice=FALSE)
-}
 }
 \references{
 \url{http://api.taucharts.com/basic/guide.html},

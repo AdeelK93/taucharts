@@ -2,7 +2,7 @@
 % Please edit documentation in R/colors.r
 \name{tau_color_manual}
 \alias{tau_color_manual}
-\title{Specify the colors used in the charts}
+\title{Specify the colors used in the charts for categorical values}
 \usage{
 tau_color_manual(tau, values = NULL)
 }

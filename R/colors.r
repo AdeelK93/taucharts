@@ -1,4 +1,4 @@
-#' Specify the colors used in the charts
+#' Specify the colors used in the charts for categorical values
 #'
 #' Vector can be optionally named in order to give explicit color/value mapping.
 #'
@@ -36,6 +36,33 @@ tau_color_manual <- function(tau, values=NULL) {
     sprintf("{{ID}} div .tau-chart__svg .tau-chart__line.%s { background: %s; border: 1px solid %s; stroke: %s; }", eids, values, values, values),
     sprintf("{{ID}} div .tau-chart__legend__item.disabled .tau-chart__legend__guide.%s { background: 0 0; background-color: transparent; }", eids, values, values)
   ))
+}
+
+#' Specify the colors used in the charts for measure values
+#'
+#' Color mapping for measure (continuous) values starting from low to high,
+#' with an optional mid value
+#'
+#' @param tau taucharts object
+#' @param low,high colors for low and high ends of the gradient,
+#'        ideally names (e.g. "\code{black}") or hex-format (e.g. "\code{#ffeeaa}")
+#' @param mid optional color for midpoint
+#' @references \url{http://api.taucharts.com/advanced/encoding.html}
+#' @importFrom scales seq_gradient_pal
+#' @importFrom scales div_gradient_pal
+#' @export
+#' @examples
+#' tauchart(airquality) %>%
+#'   tau_point("Wind", "Temp", color="Temp") %>%
+#'   tau_color_gradient("blue", "red") %>%
+#'   tau_guide_y(min = 50)
+tau_color_gradient <- function(tau, low = "coral", high = "navy", mid = NULL) {
+  if (is.null(mid)) {
+    tau$x$guide$color$brewer <- scales::seq_gradient_pal(low, high)(seq(0, 1, length.out = 256))
+  } else {
+    tau$x$guide$color$brewer <- scales::div_gradient_pal(low, mid, high)(seq(0, 1, length.out = 256))
+  }
+  tau
 }
 
 #' Use the ColorBrewer palette in the charts
